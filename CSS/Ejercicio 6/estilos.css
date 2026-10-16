@@ -1,0 +1,58 @@
+/* Letra por defecto de toda la página */
+body {
+    font-size: 16px;
+    font-family: Verdana, Tahoma, sans-serif;
+}
+
+/* Párrafos de toda la página */
+p {
+    color: #555;
+}
+
+/* Párrafos de seccion1 */
+#seccion1 p {
+    font-size: 20px;
+    color: #000080;
+}
+
+/* Links de toda la página */
+a {
+    color: #ff0000;
+}
+
+/* Elementos de énfasis */
+em {
+    color: #FFFF00;
+    background-color: #000000;
+}
+
+/* Elementos de énfasis de seccion1 */
+#seccion1 em {
+    color: #0000BB;
+    background-color: #f7f72c;
+}
+
+/* Párrafos hijos directos de section */
+section > p {
+    color: #b8860b;
+    font-style: italic;
+    font-weight: bold;
+}
+
+/* Elementos contenidos en la clase "normal" */
+.normal * {
+    color: #000000;
+    font-weight: bold;
+    background-color: #deb887;
+}
+
+.normal em {
+    color: #FFFF00;
+    font-weight: bold;
+    background-color: #000000;
+}
+
+/* Pseudoclase: cuando paso el mouse por un título */
+h1:hover {
+    font-size: 35px;
+}

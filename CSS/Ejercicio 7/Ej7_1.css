@@ -1,0 +1,38 @@
+/* 1. Tipografía base con fallback y tamaño en html */
+html {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: 100%; /* equivale a 16px en la mayoría de los navegadores */
+}
+
+/* h1 y h2 en rem (relativo al tamaño base de html) */
+h1 {
+  font-size: 2.5rem;   /* 40px */
+  font-weight: bold;   /* 2. h1 en negrita */
+  color: #8b2e1a;      /* 4. hex */
+}
+
+h2 {
+  font-size: 1.75rem;  /* 28px */
+  color: rgb(46, 94, 78); /* 4. rgb */
+}
+
+/* 2. Línea .sub en cursiva */
+.sub {
+  font-style: italic;
+}
+
+/* 3. Interlineado cómodo en párrafos */
+p {
+  line-height: 1.6;
+}
+
+/* 3. Letter-spacing sutil + 4. color hsl */
+.nota {
+  letter-spacing: 0.05em;
+  color: hsl(30, 60%, 35%);
+}
+
+/* 5. Texto del aside centrado */
+#lateral {
+  text-align: center;
+}

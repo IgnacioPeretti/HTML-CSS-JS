@@ -1,0 +1,53 @@
+.card {
+  background-color: #e98912;
+  background-image: url("https://picsum.photos/600/200");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+media {
+  height: 150px;
+}
+
+.card {
+  max-width: 400px;
+  padding: 10px;
+  margin: 40px auto;
+}
+
+.card {
+  border: 3px solid #1a5122;
+}
+
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #c0562b;
+  color: white;
+  text-decoration: none;
+  border: 2px solid #c0562b;
+  border-radius: 6px;
+}
+
+.btn:hover {
+  background-color: rgb(241, 215, 112);
+  color: #c0562b;
+}
+
+.titulo {
+  color: #e9e3e0;
+}
+
+.desc {
+  color: #f5f3f1;
+}
+
+
+
+
+
+
+
+

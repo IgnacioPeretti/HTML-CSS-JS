@@ -1,0 +1,9 @@
+Tipografía y color de un mini-blog
+
+Consignas CSS:
+
+Definír una familia tipográfica con fallback y un tamaño base en html (ej: 16px o 100%). Ajustá h1 y h2 con rem. 
+Poner el h1 negrita y la línea de la clase .sub cursiva. 
+Aplicar line-height cómodo en los párrafos y letter-spacing sutil en .nota. 
+Colorear textos con hex, rgb y hsl (uno distinto para h1, h2 y .nota). 
+Alinear el texto del aside al centro para contrastar.

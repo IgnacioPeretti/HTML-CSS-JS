@@ -1,0 +1,7 @@
+Alto, ancho y overflow
+
+Consignas CSS:
+
+A .caja definir width fijo y height fija (p.ej. 220×180). 
+Aplicar overflow: visible | hidden | scroll en cada variante y probá también overflow-x y overflow-y. 
+Sumar padding para que el texto no pegue contra el borde.

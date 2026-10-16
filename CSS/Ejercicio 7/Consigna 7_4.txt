@@ -1,0 +1,10 @@
+Listas, pseudo-clases y selectores de atributo
+
+Consignas CSS:
+
+Alternar el fondo de los ítems con :nth-child(odd/even). Destacá el primero y el último (:first-child, :last-child). 
+Cambiar el estilo al pasar el mouse con :hover sobre los links (color o tamaño de fuente). Y definí estilos para :link y :visited. 
+Usar selectores de atributo para:
+Pintar de verde los links https (a[href^="https"]).
+Pintar de púrpura los que terminan en .pdf (a[href$=".pdf"]).
+Subrayar los que contienen blog (a[href*="blog"]).

@@ -1,0 +1,11 @@
+.yellow-frogs {
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Ranas verdes y roja */
+.green-red-frogs {
+    flex-direction: column-reverse;
+    align-items: flex-end;
+}
+

@@ -1,0 +1,62 @@
+@font-face {
+  font-family: "Font309";
+  src: url("309.ttf") format("truetype");
+}
+
+#seccion0,
+#seccion2 p {
+  font-size: large;
+  font-family: "Font309", sans-serif;
+  color: blueviolet;
+}
+
+#linea1 {
+  font-size: 2.5em;
+  color: brown;
+}
+
+
+#seccion3 {
+    font-size: x-large;
+}
+
+#seccion3 strong {
+  font-size: 75%;
+}
+
+#seccion0 .elemH {
+  font-size: larger;
+  font-weight: bolder;
+  font-style: oblique;
+}
+
+#seccion0 .elemH p {
+  font-size: inherit;
+}
+
+
+#seccion3 p {
+  text-align: left;
+  word-spacing: 5px;
+  text-indent: 25px;
+}
+
+#seccion3 div {
+  text-align-last: center;
+  letter-spacing: 3px;
+  line-height: 35px;
+}
+
+
+#seccion1 {
+  width: 500px;
+  border: 5px groove black;
+  padding: 10px;
+}
+
+#seccion1 p {
+  width: 70%;
+  border: 3px solid blue;
+  background-color: aqua;
+  padding: 5px;
+}

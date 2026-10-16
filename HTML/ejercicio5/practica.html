@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Haga su pedido</title>
+</head>
+
+<body>
+
+    <main>
+        <hr>
+
+        <form action="practica.html" method="GET">
+
+            <h1>Haga su pedido!</h1>
+
+            <div>
+                <label for="tipo">Seleccione el tipo de hamburguesa</label>
+
+                <select id="tipo" name="tipo">
+                    <option value="carne-vacuna">Carne vacuna</option>
+                    <option value="carne-pollo">Carne de pollo</option>
+                    <option value="vegetariana">Vegetariana</option>
+                </select>
+            </div>
+
+            <hr>
+
+            <div>
+                <label for="cantidad">Cuántas hamburguesas desea?</label>
+
+                <input type="number" id="cantidad" name="cantidad" min="1" value="1">
+            </div>
+
+            <hr>
+
+            <div>
+                <label for="coccion">Seleccione el punto de cocción</label>
+
+                <div>
+                    <span>Poco cocida</span>
+
+                    <input type="range"
+                           id="coccion"
+                           name="coccion"
+                           min="1"
+                           max="3"
+                           step="1"
+                           value="2">
+
+                    <span>Bien cocida</span>
+                </div>
+            </div>
+
+            <hr>
+
+            <div>
+                <label>Qué ingredientes le desea agregar?</label>
+            </div>
+
+            <div>
+                <input type="checkbox" id="lechuga" name="ingredientes" value="lechuga">
+                <label for="lechuga">Lechuga</label>
+
+                <input type="checkbox" id="tomate" name="ingredientes" value="tomate">
+                <label for="tomate">Tomate</label>
+
+                <input type="checkbox" id="cebolla" name="ingredientes" value="cebolla">
+                <label for="cebolla">Cebollas</label>
+            </div>
+
+            <hr>
+
+            <div>
+                <label>Desea agregarle queso?</label>
+            </div>
+
+            <div>
+                <input type="radio" id="si" name="queso" value="si">
+                <label for="si">Si</label>
+
+                <input type="radio" id="no" name="queso" value="no" checked>
+                <label for="no">No</label>
+            </div>
+
+            <hr>
+
+            <div>
+                <label for="aderezo">Qué aderezo desea agregar?</label>
+
+                <input type="text"
+                       id="aderezo"
+                       name="aderezo"
+                       list="aderezos">
+
+                <datalist id="aderezos">
+                    <option value="Mayonesa">
+                    <option value="Kétchup">
+                    <option value="Mostaza">
+                </datalist>
+            </div>
+
+            <hr>
+
+            <div>
+                <label for="comentario">Desea dejarnos algún comentario?</label>
+            </div>
+
+            <div>
+                <textarea id="comentario" name="comentario"></textarea>
+            </div>
+
+            <hr>
+
+            <div>
+                <input type="submit" value="Enviar Pedido">
+            </div>
+
+        </form>
+
+    </main>
+
+    <section id="pedido"></section>
+
+    <script src="practica.js"></script>
+
+</body>
+
+</html>

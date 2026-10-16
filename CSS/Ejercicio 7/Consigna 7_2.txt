@@ -1,0 +1,8 @@
+Tarjeta con fondo, padding/margin y borde
+
+Consignas CSS:
+
+A la .card poner fondo de color y además una imagen decorativa en la parte superior (no repetida). Controlá su posición y tamaño (cover o contain). 
+Definir padding internos generosos y margin exterior para separarla del borde de la página. 
+Agregar un borde visible (probar dashed o solid) con color a elección. 
+Estilizar .btn como botón (padding, borde, color de fondo) y aplicá :hover para cambiar color de texto o fondo.

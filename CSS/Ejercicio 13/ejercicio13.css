@@ -1,0 +1,41 @@
+/* ---------- Contenedor ---------- */
+.grid {
+    border: 2px dashed blue;
+    height: 600px;
+    
+
+    /* Cuadrícula en bloque */
+    display: grid;
+
+    /* 4 columnas: 3 de 200px y una de 350px */
+    grid-template-columns: repeat(3, 200px) 350px;
+
+    /* 4 filas: 50, 100, 150 y 200px */
+    grid-template-rows: 50px 100px 150px 200px;
+
+    /* Espacios entre filas y columnas */
+    row-gap: 10px;
+    column-gap: 15px;
+
+    /* Alineación de los items dentro de su celda */
+    justify-items: stretch;
+    align-items: stretch;
+
+    /* Alineación de toda la cuadrícula dentro del contenedor */
+    justify-content: space-evenly;
+    align-content: space-between;
+}
+
+/* ---------- Cajas ---------- */
+.caja-1,
+.caja-2,
+.caja-3,
+.caja-4 {
+    border: 2px solid black;
+    padding: 10px;
+}
+
+.caja-1 { background-color: rgb(215, 13, 13); }
+.caja-2 { background-color: rgb(14, 149, 14); }
+.caja-3 { background-color: rgb(161, 211, 242); }
+.caja-4 { background-color: rgb(248, 175, 40); }

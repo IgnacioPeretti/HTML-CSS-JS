@@ -1,0 +1,47 @@
+.menu {
+  list-style: none;
+  padding: 0;
+  max-width: 300px;
+  
+}
+
+.menu li {
+  padding: 10px 14px;
+}
+
+
+.menu li:nth-child(odd)  { background-color: #f3e9dc; }
+.menu li:nth-child(even) { background-color: #e0d0b8; }
+
+
+
+.menu li:first-child {
+  font-weight: bold;
+  border-top: 3px solid #8b2e1a;
+}
+
+.menu li:last-child {
+  font-weight: bold;
+  border-bottom: 3px solid #8b2e1a;
+}
+
+
+
+a:link {
+  color: #0645ad;
+}
+
+a:visited {
+  color: #6b4c9a;
+}
+
+
+a[href^="https"] { color: green; }
+a[href$=".pdf"]  { color: purple; }
+a[href*="blog"]  { text-decoration: underline; }
+
+
+
+a:hover {
+  font-size: 1.2rem;
+}
