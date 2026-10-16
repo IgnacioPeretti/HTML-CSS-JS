@@ -1,0 +1,56 @@
+/* ---------- Contenedor ---------- */
+.contenedor {
+    border: 2px dashed blue;
+    height: 600px;
+
+    /* Cuadrícula en bloque */
+    display: grid;
+
+    /* Espacios entre filas y columnas */
+    row-gap: 10px;
+    column-gap: 10px;
+
+    /* Dibujo de la cuadrícula: 2 columnas y 5 filas */
+    grid-template-areas:
+        "cabecera cabecera"
+        "barramenu barramenu"
+        "principal principal1"
+        "principal2 principal2"
+        "pie       pie";
+
+    /* Primera columna el triple que la segunda */
+    grid-template-columns: 3fr 1fr;
+
+    /* Las 2 filas de principal el doble que las otras 3 */
+    grid-template-rows: 1fr 1fr 2fr 2fr 1fr;
+}
+
+/* ---------- Asignar cada hijo a su área ---------- */
+.cabecera   { grid-area: cabecera; }
+.barramenu  { grid-area: barramenu; }
+.principal  { grid-area: principal; }
+.principal1 { grid-area: principal1; }
+.principal2 { grid-area: principal2; }
+.pie        { grid-area: pie; }
+
+/* ---------- Estilos comunes ---------- */
+.cabecera,
+.barramenu,
+.principal,
+.principal1,
+.principal2,
+.pie {
+
+    border: 2px solid black;
+    padding: 10px;
+}
+
+
+
+/* ---------- Un color distinto para cada uno ---------- */
+.cabecera   { background-color: rgb(75, 240, 255); }
+.barramenu  { background-color: rgb(0, 0, 0); color: white }
+.principal  { background-color: rgb(34, 124, 34); color: white }
+.principal1 { background-color: rgb(242, 255, 0); }
+.principal2 { background-color: rgb(250, 158, 52); }
+.pie        { background-color: rgb(74, 18, 45); color: white}

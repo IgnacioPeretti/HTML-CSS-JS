@@ -1,0 +1,39 @@
+html {
+    font-family: 'Lucida Sans', 'Lucida Grande', Arial, sans-serif;
+    font-size: 10px;
+    background-color: red;
+}
+
+
+#cont {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr 1.5fr;
+    border: 10px solid blue;
+}
+
+
+section {
+    font-size: 2.5rem;
+    padding: 1rem;
+}
+
+
+#s1 { background-color: lightyellow; color: darkred; }
+#s2 { background-color: lightgreen;  color: darkgreen; }
+#s3 { background-color: lightskyblue; color: navy; }
+#s4 { background-color: plum;        color: indigo; }
+
+
+@media (max-width: 1280px) {
+    section { font-size: 2rem; padding: 0.8rem; }
+}
+
+
+@media (max-width: 768px) {
+    section { font-size: 1.5rem; padding: 0.6rem; font-style: italic; }
+}
+ 
+@media (max-width: 640px) {
+    section { font-size: 1rem; padding: 0.4rem; font-weight: bold; }
+}

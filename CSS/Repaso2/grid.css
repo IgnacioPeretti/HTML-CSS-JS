@@ -1,0 +1,27 @@
+body {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+}
+nav ul { display: flex; gap: 1.5rem; }
+
+main {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+}
+
+@media (max-width: 1023px) {
+  main { grid-template-columns: 1fr 2fr; }
+}
+
+@media (max-width: 767px) {
+  header { grid-template-columns: 1fr; }
+  nav ul { flex-direction: column; gap: 0.3rem; }
+  main { grid-template-columns: 1fr; }
+}

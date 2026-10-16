@@ -1,0 +1,103 @@
+FLEXBOX LO UTILIZAMOS PARA DEFINIR ELEMENTOS
+Y ACOMODAR ESPACIOS DENTRO DE ESOS ELEMENTOS
+
+GRID LO UTILIZAMOS PARA LAS ESTRUCTURAS DE NUESTRA PAGINA
+PARA DEFINIR FILAS - COLUMNAS 
+
+
+
+
+Parte teórica: preguntas probables
+
+1. ¿Qué diferencia hay entre Flexbox y Grid? ¿Cuándo usar cada uno?
+Flexbox es unidimensional (una fila o una columna) y Grid es bidimensional (filas y columnas a la vez). Flexbox va bien para menús, centrar y componentes chicos, y Grid para la estructura de la página o cuadrículas.
+
+2. ¿Qué es el modelo de cajas? ¿Para qué sirve box-sizing: border-box?
+Cada elemento es una caja formada por contenido, padding, border y margin. Con content-box (el valor por defecto), el padding y el borde se suman al width. Con border-box quedan incluidos adentro, y por eso es más fácil calcular los anchos.
+
+3. ¿Qué valores tiene position y qué hace cada uno?
+
+static: es el valor por defecto, sigue el flujo normal.
+relative: se desplaza respecto de su posición original y sigue ocupando su lugar.
+absolute: sale del flujo y se ubica respecto del ancestro posicionado más cercano.
+fixed: sale del flujo y se ubica respecto de la ventana, así que no se mueve con el scroll.
+sticky: se comporta como relative hasta cierto punto del scroll y después se queda fijo.
+
+4. ¿Qué es float y por qué el contenedor “colapsa”?
+float saca el elemento del flujo normal y lo ubica a la izquierda o derecha. El contenedor no cuenta a sus hijos flotantes para calcular su altura, así que queda en 0. Se soluciona con clear: both, con overflow: hidden o con un clearfix (::after { content: ""; display: block; clear: both; }).
+
+5. ¿Qué son las media queries? ¿Para qué sirve el meta viewport?
+Son reglas que aplican estilos solo cuando se cumple una condición, normalmente el ancho de pantalla: @media (max-width: 767px) { ... }. El <meta name="viewport" content="width=device-width, initial-scale=1.0"> hace que el celular use su ancho real en vez de simular una pantalla de escritorio, y sin él las media queries no funcionan bien en móviles.
+
+6. ¿Diferencia entre display: block, inline e inline-block?
+
+block: ocupa todo el ancho y empieza en una línea nueva.
+inline: ocupa solo lo que mide su contenido y no acepta width ni height.
+inline-block: se pone en línea con otros, pero sí acepta width, height, margin y padding.
+
+
+Unidades
+
+Unidad
+
+px	Absoluta, un píxel de pantalla. No se adapta al contexto.
+%	Relativa al valor del elemento padre (por ejemplo, width: 50% es la mitad del ancho del padre).
+em	Relativa al font-size del elemento (o del padre, si lo usás en font-size). Se acumula al anidar.
+rem	Relativa al font-size del <html> (la raíz). No se acumula, así que es más predecible.
+vw	1% del ancho de la ventana.
+vh	1% del alto de la ventana. 100vh es la pantalla completa.
+
+
+Flexbox
+
+justify-content alinea los elementos a lo largo del eje principal (en row es el horizontal). Valores: flex-start, center,
+space-between, space-around.
+align-items los alinea en el eje transversal (en row es el vertical). Valores: stretch (por defecto), center, flex-start.
+
+flex-direction define cuál es el eje principal: row (fila, por defecto) o column (columna).
+Al cambiarlo, los dos ejes se intercambian, y por eso justify-content pasa a ser vertical en column.
+
+flex: 1 es la abreviatura de flex: 1 1 0: el elemento crece para ocupar el espacio libre que quede. Si varios hijos tienen flex: 1, se reparten el espacio en partes iguales.
+
+Grid
+
+fr es una fracción del espacio libre. En grid-template-columns: 1fr 3fr la segunda columna es tres veces más ancha que la primera.
+repeat() evita escribir valores repetidos: repeat(3, 1fr) equivale a 1fr 1fr 1fr.
+gap es la separación entre filas y columnas (gap: 1rem). No agrega espacio en los bordes exteriores.
+grid-template-areas permite dibujar el layout con nombres, y cada elemento se asigna con grid-area:
+
+
+
+
+
+Selectores
+
+Clase vs id: la clase (.card) se puede repetir en muchos elementos, y el id (#inicio) debe ser único en la página.
+El id también sirve como destino de los links internos (href="#inicio").
+
+Especificidad: es el “peso” que decide qué regla gana cuando hay conflicto.
+De mayor a menor: estilo en línea > id > clase, pseudo-clase o atributo > etiqueta.
+Si empatan, gana la que está más abajo en el CSS.
+
+Pseudo-clases: :hover se aplica cuando el mouse pasa por encima,
+y :nth-child(n) selecciona el hijo número n (por ejemplo li:nth-child(2), o :nth-child(odd) para los impares).
+
+
+
+
+HTML semántico
+
+Etiqueta	Para qué sirve
+header -	Encabezado de la página o de una sección (logo, título).
+nav	- Bloque de links de navegación.
+main -	Contenido principal, uno por página.
+aside -	Contenido secundario, como una barra lateral.
+section -	Sección temática del contenido.
+article	- Contenido independiente (una entrada de blog, una tarjeta).
+footer	- Pie de página o de sección.
+
+DIV 
+
+Por qué es mejor que usar solo div: le da significado al código.
+Los lectores de pantalla y los buscadores entienden la estructura de la página, mejora la accesibilidad y el SEO,
+y el HTML se lee más fácil.

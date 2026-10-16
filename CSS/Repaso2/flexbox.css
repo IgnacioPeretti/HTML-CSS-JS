@@ -1,0 +1,27 @@
+body {
+  position: relative;
+  min-height: 100vh;
+  padding-bottom: 3.5rem;   /* espacio para el footer */
+}
+
+header { overflow: hidden; }
+header h1 { float: left; }
+nav { float: right; }
+nav li { float: left; margin-left: 1.5rem; }
+
+main { overflow: hidden; }
+.sidebar { float: left; width: 25%; }
+.content { float: right; width: 75%; }
+
+footer { position: absolute; bottom: 0; left: 0; width: 100%; }
+
+@media (max-width: 1023px) {
+  .sidebar { width: 30%; }
+  .content { width: 70%; }
+}
+
+@media (max-width: 767px) {
+  header h1, nav, nav li { float: none; }
+  nav li { margin-left: 0; }
+  .sidebar, .content { float: none; width: 100%; }
+}
