@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Examen: Retos Flexbox & Grid</title>
+    <style>
+        /* ESTILOS BASE DE LA PLATAFORMA (NO MODIFICAR) */
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: sans-serif; }
+        body { background: #0f172a; color: #fff; padding: 20px; }
+        h1 { text-align: center; margin-bottom: 25px; color: #38bdf8; }
+        .grid-evaluacion { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 20px; max-width: 1200px; margin: auto; }
+        .tarjeta-reto { background: #1e293b; border-radius: 8px; padding: 15px; border: 1px solid #334155; }
+        .tarjeta-reto h2 { font-size: 1rem; margin-bottom: 10px; color: #cbd5e1; }
+        
+        /* Escenario de pruebas */
+        .escenario { position: relative; width: 100%; height: 220px; background: #0b1120; border-radius: 6px; overflow: hidden; border: 2px dashed #475569; }
+        
+        /* Siluetas / Metas (Fondo gris transparente donde deben aterrizar) */
+        .meta { position: absolute; border: 2px dashed #22c55e; background: rgba(34, 197, 94, 0.15); border-radius: 6px; pointer-events: none; }
+        
+        /* Fichas móviles */
+        .ficha { border-radius: 6px; font-weight: bold; display: flex; align-items: center; justify-content: center; color: white; }
+        .azul { background: #2563eb; width: 60px; height: 60px; }
+        .naranja { background: #ea580c; width: 50px; height: 50px; }
+        .verde { background: #16a34a; width: 50px; height: 50px; }
+        .violeta { background: #9333ea; width: 50px; height: 50px; }
+        .rojo { background: #dc2626; width: 60px; height: 60px; }
+        .dorado { background: #eab308; color: #000; }
+
+        /* Estilos para el Hangar de fondo del Reto 4 */
+        .capa-hangar-metas {
+            position: absolute;
+            inset: 10px; /* coincide con el padding del escenario */
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, 90px); /* 2 filas de 90px para entrar en los 220px */
+            gap: 15px;
+            pointer-events: none;
+        }
+
+        .bahia-meta {
+            border: 2px dashed #22c55e;
+            background: rgba(34, 197, 94, 0.1);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #22c55e;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Estado inicial del contenedor antes de que el alumno escriba CSS */
+        #contenedor-4 {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        #contenedor-4 .ficha {
+            width: 100%;
+            height: 100%;
+        }
+        /* Escenario de fondo (Metas verdes) */
+        .capa-areas-metas {
+            position: absolute;
+            inset: 10px;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            grid-template-rows: 40px 1fr 35px;
+            gap: 8px;
+            grid-template-areas: 
+                "h h"
+                "s m"
+                "f f";
+            pointer-events: none;
+        }
+
+        .meta-area {
+            border: 2px dashed #22c55e;
+            background: rgba(34, 197, 94, 0.1);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #22c55e;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .area-meta-h { grid-area: h; }
+        .area-meta-s { grid-area: s; }
+        .area-meta-m { grid-area: m; }
+        .area-meta-f { grid-area: f; }
+
+        /* Contenedor del alumno: Ya tiene la grilla base armada */
+        #contenedor-6 {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            grid-template-rows: 40px 1fr 35px;
+            gap: 8px;
+        }
+
+        /* Las fichas se adaptan naturalmente a su celda */
+        #contenedor-6 .ficha {
+            width: 100%;
+            height: 100%;
+        }
+        /* Estilo del botón de control */
+        .btn-toggle-guias {
+            background-color: #334155;
+            color: #f8fafc;
+            border: 2px solid #64748b;
+            padding: 8px 16px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-toggle-guias:hover {
+            background-color: #475569;
+            border-color: #38bdf8;
+        }
+
+        /* Estado activo del botón */
+        .btn-toggle-guias.activo {
+            background-color: #16a34a;
+            border-color: #22c55e;
+            color: white;
+        }
+
+        /* ============================================================
+        MODO GUÍAS AL FRENTE (Se activa al presionar el botón)
+        ============================================================ */
+        /* 1. Traer todas las siluetas al frente */
+        body.modo-guias .meta,
+        body.modo-guias .capa-hangar-metas,
+        body.modo-guias .capa-areas-metas {
+            z-index: 50 !important;
+            pointer-events: none;
+        }
+
+        /* 2. Resaltar las líneas de las guías para verlas con nitidez */
+        body.modo-guias .meta,
+        body.modo-guias .bahia-meta,
+        body.modo-guias .meta-area {
+            background: rgba(34, 197, 94, 0.35) !important;
+            border-color: #4ade80 !important;
+            border-width: 3px !important;
+        }
+
+        /* 3. Desvanecer las fichas de los alumnos para que se vea el fondo */
+        body.modo-guias .ficha {
+            opacity: 0.2 !important;
+            transition: opacity 0.2s ease;
+        }
+    </style>
+    <!-- Aquí se cargan las respuestas del alumno -->
+    <link rel="stylesheet" href="solucion.css">
+</head>
+<body>
+
+    <header style="display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto 25px auto;">
+        <h1 style="margin: 0; color: #38bdf8;">Laboratorio Práctico: Flexbox & CSS Grid</h1>
+    
+        <!-- BOTÓN DE CONTROL -->
+        <button id="btn-guias" class="btn-toggle-guias" onclick="alternarGuias()">
+            👁️ Ver Guías al Frente
+        </button>
+    </header>
+
+    <div class="grid-evaluacion">
+        
+        <!-- RETO 1 -->
+        <div class="tarjeta-reto">
+            <h2>Reto 1: Centrado absoluto (Flexbox)</h2>
+            <div class="escenario" id="contenedor-1">
+                <!-- Meta visual -->
+                <div class="meta" style="width: 60px; height: 60px; top: calc(50% - 30px); left: calc(50% - 30px);"></div>
+                <!-- Ficha -->
+                <div class="ficha azul">1</div>
+            </div>
+        </div>
+
+        <!-- RETO 2 -->
+        <div class="tarjeta-reto">
+            <h2>Reto 2: Eje invertido y extremo (Flexbox)</h2>
+            <div class="escenario" id="contenedor-2">
+                <!-- Metas visuales -->
+                <div class="meta" style="width: 50px; height: 50px; top: 0; right: 0;"></div>
+                <div class="meta" style="width: 50px; height: 50px; top: calc(50% - 25px); right: 0;"></div>
+                <div class="meta" style="width: 50px; height: 50px; bottom: 0; right: 0;"></div>
+                <!-- Fichas -->
+                <div class="ficha naranja">A</div>
+                <div class="ficha verde">B</div>
+                <div class="ficha violeta">C</div>
+            </div>
+        </div>
+
+        <!-- RETO 3 -->
+        <div class="tarjeta-reto">
+            <h2>Reto 3: El Intruso (Flexbox)</h2>
+            <div class="escenario" id="contenedor-3" style="display: flex; gap: 10px;">
+                <!-- Metas visuales -->
+                <div class="meta" style="width: 60px; height: 60px; bottom: 0; left: 0;"></div>
+                <div class="meta" style="width: 60px; height: 60px; top: 0; left: 70px;"></div>
+                <div class="meta" style="width: 60px; height: 60px; top: 0; left: 140px;"></div>
+                <!-- Fichas -->
+                <div class="ficha azul">1</div>
+                <div class="ficha rojo" id="item-rojo">2</div>
+                <div class="ficha azul">3</div>
+            </div>
+        </div>
+
+        <!-- RETO 4: Hangar 3x2 -->
+        <div class="tarjeta-reto">
+            <h2>Reto 4: Hangar 3x2 (Definición de Grilla)</h2>
+            <!-- El escenario tiene padding de 10px para dar margen exacto -->
+            <div class="escenario" style="padding: 10px;">
+                
+                <!-- CAPA DE FONDO: Las 6 bahías objetivo (fijas en el fondo) -->
+                <div class="capa-hangar-metas">
+                    <div class="bahia-meta">1</div>
+                    <div class="bahia-meta">2</div>
+                    <div class="bahia-meta">3</div>
+                    <div class="bahia-meta">4</div>
+                    <div class="bahia-meta">5</div>
+                    <div class="bahia-meta">6</div>
+                </div>
+
+                <!-- CAPA ACTIVA: Lo que el alumno manipula con #contenedor-4 -->
+                <div id="contenedor-4">
+                    <div class="ficha naranja">1</div>
+                    <div class="ficha naranja">2</div>
+                    <div class="ficha naranja">3</div>
+                    <div class="ficha naranja">4</div>
+                    <div class="ficha naranja">5</div>
+                    <div class="ficha naranja">6</div>
+                </div>
+
+            </div>
+        </div>
+        <!-- RETO 5 -->
+        <div class="tarjeta-reto">
+            <h2>Reto 5: Spanning en Grilla 3x3 (Grid)</h2>
+            <div class="escenario" id="contenedor-5" style="display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(3, 1fr); gap: 5px;">
+                <!-- Meta visual -->
+                <div class="meta" style="grid-column: 1 / 3; grid-row: 2 / 4; width: 100%; height: 100%;"></div>
+                <!-- Ficha -->
+                <div class="ficha dorado" id="bloque-dorado">EXPANDIR</div>
+            </div>
+        </div>
+
+        
+        <!-- RETO 6: Grid Template Areas -->
+        <div class="tarjeta-reto">
+            <h2>Reto 6: Estructura de Interfaz (Areas)</h2>
+            <div class="escenario" style="padding: 10px;">
+                
+                <!-- SILUETA DE FONDO: Zonas objetivo que deben cubrir -->
+                <div class="capa-areas-metas">
+                    <div class="meta-area area-meta-h">HEADER</div>
+                    <div class="meta-area area-meta-s">SIDE</div>
+                    <div class="meta-area area-meta-m">MAIN</div>
+                    <div class="meta-area area-meta-f">FOOTER</div>
+                </div>
+
+                <!-- CAPA ACTIVA: Lo que el alumno debe posicionar -->
+                <div id="contenedor-6">
+                    <div class="ficha azul" id="area-h">Header</div>
+                    <div class="ficha verde" id="area-s">Side</div>
+                    <div class="ficha naranja" id="area-m">Main</div>
+                    <div class="ficha violeta" id="area-f">Footer</div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <script>
+        function alternarGuias() {
+            const body = document.body;
+            const btn = document.getElementById('btn-guias');
+            
+            body.classList.toggle('modo-guias');
+            
+            if (body.classList.contains('modo-guias')) {
+                btn.innerHTML = '🔄 Ver Fichas Normales';
+                btn.classList.add('activo');
+            } else {
+                btn.innerHTML = '👁️ Ver Guías al Frente';
+                btn.classList.remove('activo');
+            }
+        }
+    </script>
+</body>
+</html>

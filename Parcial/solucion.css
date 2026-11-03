@@ -1,0 +1,123 @@
+/* RETO 1 */
+
+
+#contenedor-1 {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+
+/* RETO 2 */
+
+
+#contenedor-2 {
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    position: relative;
+    flex-direction: column-reverse;
+    gap: 35px;
+
+}
+
+
+/* RETO 3 */
+
+#contenedor-3 {
+
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    flex-direction: column-reverse;
+    
+    
+    
+    
+
+}
+
+#item-rojo {
+
+    position: absolute
+    align-self: flex-end;
+    
+
+}
+
+
+
+
+
+/* RETO 4 */
+
+#contenedor-4 {
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 90px);
+    gap: 15px;
+    
+
+}
+
+
+/* RETO 5 */
+
+
+#bloque-dorado {
+
+    display: grid;
+    grid-column: 1 / 3;
+    grid-row: 1 / 3;
+    grid-area: 2 / 1 / 4 / 3;
+
+
+}
+
+
+
+    
+/* RETO 6 */
+
+
+#contenedor-6 {
+
+    display: grid;
+    grid-template-areas: "header header", "side main", "footer footer";
+    grid-template-columns: repeat(2, 1fr, 2fr);
+    grid-template-rows: repeat(3, 40px, 1fr, 35px); 
+    gap: 8px;
+   
+
+}
+
+
+#area-h {
+
+    grid-column: 1 / 3;
+    grid-row: 1 / 1;
+
+
+}
+
+
+#area-f {
+
+    grid-column: 1 / 3;
+    
+}
+
+
+
+    
+
+
+
+
+    
+
+

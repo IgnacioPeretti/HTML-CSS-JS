@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ejercicio DOM - Manipulación de elementos</title>
+  <script src="main.js" defer></script>
+  <style>
+    body {
+      font-family: system-ui, Segoe UI, Roboto, Helvetica, Arial;
+      max-width: 760px;
+      margin: 32px auto;
+      padding: 0 16px;
+    }
+
+    .container {
+      border: 1px solid #ddd;
+      padding: 16px;
+      border-radius: 8px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      margin: 6px 0;
+    }
+
+    button {
+      margin: 6px 8px 6px 0;
+      cursor: pointer;
+    }
+
+    .log {
+      background: #f6f8fa;
+      border: 1px solid #e1e4e8;
+      padding: 8px;
+      border-radius: 6px;
+      height: 120px;
+      overflow: auto;
+      font-family: monospace;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Ejercicio DOM</h1>
+  <p>
+    Crea el archivo <code>main.js</code> e implementa las funciones necesarias para que los botones de abajo
+    modifiquen la lista de tareas usando los métodos:
+    <code>appendChild</code>, <code>removeChild</code>, <code>replaceChild</code> e <code>insertBefore</code>.
+  </p>
+
+  <div class="container">
+    <h2>Lista de tareas</h2>
+
+    <ul id="todo-list">
+      <li id="item-1">Comprar carne</li>
+      <li id="item-2">Pagar servicios</li>
+      <li id="item-3">Enviar reporte</li>
+    </ul>
+
+    <div style="margin-top:12px">
+      <button id="btn-add">Agregar tarea al final (appendChild)</button>
+      <button id="btn-insert">Insertar antes de la segunda (insertBefore)</button>
+      <button id="btn-replace">Reemplazar la primera (replaceChild)</button>
+      <button id="btn-remove">Eliminar la última (removeChild)</button>
+    </div>
+
+    <h3>Agregar tarea personalizada</h3>
+    <input id="new-text" placeholder="Texto de la tarea" style="width:60%" />
+    <button id="btn-add-custom">Agregar (appendChild)</button>
+
+    <h3>Registro de acciones</h3>
+    <div id="log" class="log"></div>
+  </div>
+
+  <!-- Archivo JavaScript que deben crear los alumnos -->
+  <script src="main.js"></script>
+</body>
+
+</html>
