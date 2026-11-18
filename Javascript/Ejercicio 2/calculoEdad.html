@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Formulario de Grupos</title>
+</head>
+<body>
+  <h1>Formulario de Grupos</h1>
+
+  <fieldset>
+    <legend>INGRESO DE DATOS</legend>
+    <p>Nombre: <input type="text" id="nombre"></p>
+    <p>Año de nacimiento: <input type="number" id="anio"></p>
+  </fieldset>
+
+  <p><button id="boton">Calcular grupo</button></p>
+
+  <br>
+  
+
+  <fieldset>
+    <legend>RESULTADO</legend>
+    <p>ESTUDIANTE: <input type="text" id="resEstudiante" readonly></p>
+    <p>EDAD: <input type="text" id="resEdad" readonly></p>
+    <p>GRUPO: <input type="text" id="resGrupo" readonly></p>
+  </fieldset>
+
+  <script src="calculoEdad.js"></script>
+</body>
+</html>

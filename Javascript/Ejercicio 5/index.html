@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="main.js" defer></script>
+    <title>Ejercicio DOM Moderno</title>
+    <style>
+        body {
+            font-family: system-ui, Segoe UI, Roboto, Helvetica, Arial;
+            max-width: 760px;
+            margin: 32px auto;
+            padding: 0 16px;
+        }
+
+        .container {
+            border: 1px solid #ddd;
+            padding: 16px;
+            border-radius: 8px;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin: 6px 0;
+        }
+
+        button {
+            margin: 6px 8px 6px 0;
+            cursor: pointer;
+        }
+
+        .log {
+            background: #f6f8fa;
+            border: 1px solid #e1e4e8;
+            padding: 8px;
+            border-radius: 6px;
+            height: 120px;
+            overflow: auto;
+            font-family: monospace;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Ejercicio DOM Moderno</h1>
+    <p>
+        Implementa en <code>main.js</code> las funciones que usen los métodos modernos:
+        <code>before</code>, <code>after</code>, <code>prepend</code>, <code>append</code>,
+        <code>replaceChildren</code>, <code>replaceWith</code> y <code>remove</code>.
+    </p>
+
+    <div class="container">
+        <h2>Notas</h2>
+
+        <ul id="notes-list">
+            <li id="note-1">Estudiar para el examen</li>
+            <li id="note-2">Comprar materiales</li>
+            <li id="note-3">Enviar informe</li>
+        </ul>
+
+        <div style="margin-top:12px">
+            <button id="btn-prepend">Agregar al inicio (prepend)</button>
+            <button id="btn-append">Agregar al final (append)</button>
+            <button id="btn-before">Insertar antes del segundo (before)</button>
+            <button id="btn-after">Insertar después del segundo (after)</button>
+            <button id="btn-replaceChildren">Reemplazar todos (replaceChildren)</button>
+            <button id="btn-replaceWith">Reemplazar la primera nota (replaceWith)</button>
+            <button id="btn-remove">Eliminar la última nota (remove)</button>
+        </div>
+
+        <h3>Agregar nota personalizada</h3>
+        <input id="new-text" placeholder="Texto de la nota" style="width:60%" />
+        <button id="btn-add-custom">Agregar al final (append)</button>
+
+        <h3>Registro de acciones</h3>
+        <div id="log" class="log"></div>
+    </div>
+
+</body>
+
+</html>
