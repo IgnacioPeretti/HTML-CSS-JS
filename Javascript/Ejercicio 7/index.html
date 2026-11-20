@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejercicio: Relaciones DOM</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fafafa;
+            padding: 2rem;
+        }
+
+        .container {
+            border: 2px solid #333;
+            border-radius: 8px;
+            padding: 1rem;
+            background: white;
+            width: 350px;
+        }
+
+        ul {
+            border: 1px solid #aaa;
+            padding: 0.5rem;
+            border-radius: 5px;
+            list-style: none;
+        }
+
+        li {
+            margin: 0.4rem 0;
+            padding: 0.3rem;
+            border-radius: 4px;
+            background: #e3e3e3;
+        }
+
+        button {
+            margin: 0.3rem;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+        }
+
+        #log {
+            margin-top: 1rem;
+            background: #f2f2f2;
+            border-radius: 5px;
+            padding: 0.5rem;
+            height: 180px;
+            overflow-y: auto;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Ejercicio: Relaciones entre nodos y elementos</h1>
+
+    <div class="container" id="contenedor">
+        <h3>Lista de frutas</h3>
+        <ul id="lista-frutas">
+            <li id="fruta-1">🍎 Manzana</li>
+            <li id="fruta-2">🍌 Banana</li>
+            <li id="fruta-3">🍊 Naranja</li>
+            <li id="fruta-4">🍇 Uva</li>
+        </ul>
+    </div>
+
+    <div>
+        <button id="btn-children">.children / .childNodes</button>
+        <button id="btn-parent">.parentElement / .parentNode</button>
+        <button id="btn-first-last">.first / .last</button>
+        <button id="btn-siblings">.previous / .next</button>
+    </div>
+
+    <div id="log"><strong>Registro:</strong></div>
+
+    <script src="main.js"></script>
+</body>
+
+</html>

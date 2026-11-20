@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejercicio: insertAdjacent...</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 2rem;
+            background-color: #fafafa;
+        }
+
+        #card {
+            border: 2px solid #333;
+            border-radius: 8px;
+            background: white;
+            padding: 1rem;
+            margin: 1rem 0;
+            width: 300px;
+        }
+
+        button {
+            margin: 0.3rem;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+        }
+
+        #log {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: #333;
+            background: #f0f0f0;
+            padding: 0.5rem;
+            border-radius: 5px;
+            height: 150px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Ejercicio: Métodos insertAdjacent...</h1>
+
+    <section id="card">
+        <h3 id="title">Título original</h3>
+        <p id="content">Este es el texto original del párrafo dentro de la tarjeta.</p>
+    </section>
+
+    <div>
+        <button id="btn-element-before">insertAdjacentElement('beforebegin')</button>
+        <button id="btn-html-after">insertAdjacentHTML('afterbegin')</button>
+        <button id="btn-text-end">insertAdjacentText('beforeend')</button>
+    </div>
+
+    <div id="log"><strong>Registro:</strong></div>
+
+    <script src="main.js"></script>
+</body>
+
+</html>
