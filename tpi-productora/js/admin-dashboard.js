@@ -1,5 +1,8 @@
 protegerPagina("ADMIN");
 
+Chart.defaults.color = "#e9e9f2";
+Chart.defaults.borderColor = "rgba(255, 255, 255, 0.1)";
+
 const resumen = document.getElementById("resumen");
 const mensaje = document.getElementById("mensaje");
 

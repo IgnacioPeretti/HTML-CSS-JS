@@ -1,0 +1,240 @@
+:root {
+  --color-primario: #6f42c1;
+  --color-primario-oscuro: #5a32a3;
+  --color-oscuro: #1b1b2f;
+  --color-fondo: #f4f5fb;
+}
+
+body {
+  background: var(--color-fondo);
+  font-family: "Segoe UI", system-ui, sans-serif;
+  color: #2b2b3a;
+}
+
+h1, h2, h5 {
+  font-weight: 700;
+  color: var(--color-oscuro);
+}
+
+/* ---------- Menú ---------- */
+.navbar.bg-dark {
+  background: linear-gradient(90deg, #1b1b2f, #3a2a6b) !important;
+}
+.navbar-brand {
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+.nav-link {
+  transition: color 0.2s;
+}
+.nav-link:hover {
+  color: #fff !important;
+}
+
+/* ---------- Botones ---------- */
+.btn-primary {
+  --bs-btn-bg: var(--color-primario);
+  --bs-btn-border-color: var(--color-primario);
+  --bs-btn-hover-bg: var(--color-primario-oscuro);
+  --bs-btn-hover-border-color: var(--color-primario-oscuro);
+  --bs-btn-active-bg: var(--color-primario-oscuro);
+  --bs-btn-active-border-color: var(--color-primario-oscuro);
+}
+.btn-outline-primary {
+  --bs-btn-color: var(--color-primario);
+  --bs-btn-border-color: var(--color-primario);
+  --bs-btn-hover-bg: var(--color-primario);
+  --bs-btn-hover-border-color: var(--color-primario);
+  --bs-btn-active-bg: var(--color-primario);
+  --bs-btn-active-border-color: var(--color-primario);
+}
+
+/* ---------- Formularios ---------- */
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--color-primario);
+  box-shadow: 0 0 0 0.2rem rgba(111, 66, 193, 0.2);
+}
+
+/* ---------- Cards ---------- */
+.card {
+  border: none;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(27, 27, 47, 0.08);
+}
+
+/* Todas las imágenes del mismo tamaño, sin deformarse */
+.card-img-top {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+/* Efecto al pasar el mouse, solo en la cartelera */
+#cartelera .card {
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+#cartelera .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 24px rgba(27, 27, 47, 0.18);
+}
+
+#cartelera .badge {
+  background: var(--color-primario) !important;
+}
+#cartelera .card-body p.fw-bold {
+  color: var(--color-primario);
+}
+
+/* En la pantalla de compra la imagen puede ser más alta */
+#detalle-evento .card-img-top {
+  height: 260px;
+}
+
+/* ---------- Tablas ---------- */
+.table thead th {
+  background: var(--color-oscuro);
+  color: #fff;
+  border: none;
+}
+.table-responsive {
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(27, 27, 47, 0.08);
+  background: #fff;
+}
+
+/* ---------- Banner de la cartelera (opcional, ver paso 3) ---------- */
+.hero {
+  background: linear-gradient(120deg, #1b1b2f, #6f42c1);
+  color: #fff;
+  padding: 2.5rem 0;
+  margin-bottom: 1.5rem;
+}
+.hero h1 {
+  color: #fff;
+  margin-bottom: 0.25rem;
+}
+.hero p {
+  margin: 0;
+  opacity: 0.85;
+}
+
+
+
+/* ---------- Pie de página siempre abajo ---------- */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+  padding-bottom: 4rem; /* espacio entre las tarjetas y el pie */
+}
+
+.footer-marca {
+  background: #1b1b2f;
+  color: #fff;
+  text-align: center;
+  padding: 1.5rem 0;
+}
+.footer-marca strong {
+  letter-spacing: 2px;
+}
+
+
+/* ---------- Tira de texto en movimiento ---------- */
+.tira {
+  background: var(--color-oscuro);
+  color: #fff;
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 0.7rem 0;
+}
+
+.tira-pista {
+  display: flex;
+  width: max-content;
+  animation: tira-mover 30s linear infinite;
+}
+
+.tira-grupo {
+  display: flex;
+  flex-shrink: 0;
+}
+
+.tira-grupo span {
+  font-weight: 800;
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+}
+
+.tira-grupo span::after {
+  content: "✦";
+  margin: 0 1.5rem;
+  color: #c9b6f5;
+}
+
+@keyframes tira-mover {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.tira:hover .tira-pista {
+  animation-play-state: paused;
+}
+
+
+
+/* Tira de abajo: violeta y en sentido contrario */
+.tira-pie {
+  background: var(--color-primario);
+}
+.tira-pie .tira-pista {
+  animation-direction: reverse;
+}
+
+
+
+/* ---------- Tema oscuro ---------- */
+body {
+  background: #000;
+  color: #e9e9f2;
+}
+
+h1, h2, h5 {
+  color: #fff;
+}
+
+.card {
+  background: #14141c;
+  color: #e9e9f2;
+  box-shadow: 0 2px 8px rgba(111, 66, 193, 0.25);
+}
+#cartelera .card:hover {
+  box-shadow: 0 10px 24px rgba(111, 66, 193, 0.45);
+}
+
+/* El violeta oscuro no se lee sobre negro: usamos uno más claro */
+#cartelera .card-body p.fw-bold {
+  color: #b794f6;
+}
+.btn-outline-primary {
+  --bs-btn-color: #b794f6;
+  --bs-btn-border-color: #b794f6;
+}
+
+.table-responsive {
+  background: #14141c;
+  box-shadow: 0 2px 8px rgba(111, 66, 193, 0.25);
+}
+.table thead th {
+  background: #2a1f4d;
+}
+
+.footer-marca {
+  background: #14141c;
+  border-top: 1px solid #2a1f4d;
+}
