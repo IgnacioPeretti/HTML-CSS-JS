@@ -41,13 +41,13 @@ const renderFooter = () => {
   if (document.getElementById("footer-marca")) return; // evita duplicarlo
   document.body.insertAdjacentHTML(
     "beforeend",
-    `<footer id="footer-marca" class="footer-marca">
+    `${crearTira("tira-pie")}
+     <footer id="footer-marca" class="footer-marca">
        <div class="container">
          <strong>SUBZ0NE</strong> producciones · Venta de entradas para eventos y espectáculos
          <div class="small opacity-75">© 2026 SUBZ0NE producciones · TPI Programación III</div>
        </div>
-     </footer>
-     ${crearTira("tira-pie")}`
+     </footer>`
   );
 };
 

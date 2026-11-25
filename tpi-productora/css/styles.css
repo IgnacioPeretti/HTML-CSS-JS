@@ -1,151 +1,126 @@
+/* =========================================================
+   SUBZ0NE producciones · estilos del sitio
+   Orden: variables · base · menú · tiras · banner · botones
+          formularios · cards · tablas · login · pie
+   ========================================================= */
+
+/* ---------- Variables ---------- */
 :root {
   --color-primario: #6f42c1;
   --color-primario-oscuro: #5a32a3;
+  --color-claro: #b794f6;
   --color-oscuro: #1b1b2f;
-  --color-fondo: #f4f5fb;
+  --color-superficie: #14141c;
+  --color-borde: #2a1f4d;
 }
 
-body {
-  background: var(--color-fondo);
-  font-family: "Segoe UI", system-ui, sans-serif;
-  color: #2b2b3a;
+/* ---------- Base ---------- */
+html {
+  height: 100%;
 }
 
-h1, h2, h5 {
-  font-weight: 700;
-  color: var(--color-oscuro);
-}
-
-/* ---------- Menú ---------- */
-.navbar.bg-dark {
-  background: linear-gradient(90deg, #1b1b2f, #3a2a6b) !important;
-}
-.navbar-brand {
-  font-weight: 700;
-  letter-spacing: 0.5px;
-}
-.nav-link {
-  transition: color 0.2s;
-}
-.nav-link:hover {
-  color: #fff !important;
-}
-
-/* ---------- Botones ---------- */
-.btn-primary {
-  --bs-btn-bg: var(--color-primario);
-  --bs-btn-border-color: var(--color-primario);
-  --bs-btn-hover-bg: var(--color-primario-oscuro);
-  --bs-btn-hover-border-color: var(--color-primario-oscuro);
-  --bs-btn-active-bg: var(--color-primario-oscuro);
-  --bs-btn-active-border-color: var(--color-primario-oscuro);
-}
-.btn-outline-primary {
-  --bs-btn-color: var(--color-primario);
-  --bs-btn-border-color: var(--color-primario);
-  --bs-btn-hover-bg: var(--color-primario);
-  --bs-btn-hover-border-color: var(--color-primario);
-  --bs-btn-active-bg: var(--color-primario);
-  --bs-btn-active-border-color: var(--color-primario);
-}
-
-/* ---------- Formularios ---------- */
-.form-control:focus,
-.form-select:focus {
-  border-color: var(--color-primario);
-  box-shadow: 0 0 0 0.2rem rgba(111, 66, 193, 0.2);
-}
-
-/* ---------- Cards ---------- */
-.card {
-  border: none;
-  border-radius: 14px;
-  overflow: hidden;
-  box-shadow: 0 2px 8px rgba(27, 27, 47, 0.08);
-}
-
-/* Todas las imágenes del mismo tamaño, sin deformarse */
-.card-img-top {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-}
-
-/* Efecto al pasar el mouse, solo en la cartelera */
-#cartelera .card {
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-#cartelera .card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 24px rgba(27, 27, 47, 0.18);
-}
-
-#cartelera .badge {
-  background: var(--color-primario) !important;
-}
-#cartelera .card-body p.fw-bold {
-  color: var(--color-primario);
-}
-
-/* En la pantalla de compra la imagen puede ser más alta */
-#detalle-evento .card-img-top {
-  height: 260px;
-}
-
-/* ---------- Tablas ---------- */
-.table thead th {
-  background: var(--color-oscuro);
-  color: #fff;
-  border: none;
-}
-.table-responsive {
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(27, 27, 47, 0.08);
-  background: #fff;
-}
-
-/* ---------- Banner de la cartelera (opcional, ver paso 3) ---------- */
-.hero {
-  background: linear-gradient(120deg, #1b1b2f, #6f42c1);
-  color: #fff;
-  padding: 2.5rem 0;
-  margin-bottom: 1.5rem;
-}
-.hero h1 {
-  color: #fff;
-  margin-bottom: 0.25rem;
-}
-.hero p {
-  margin: 0;
-  opacity: 0.85;
-}
-
-
-
-/* ---------- Pie de página siempre abajo ---------- */
 body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  min-height: 100dvh;
+  background: #000;
+  color: #e9e9f2;
+  font-family: "Segoe UI", system-ui, sans-serif;
 }
 
+/* El contenido se estira y empuja la tira y el pie hacia abajo */
 main {
-  flex: 1;
-  padding-bottom: 4rem; /* espacio entre las tarjetas y el pie */
+  flex: 1 0 auto;
+  padding-bottom: 4rem;
 }
 
-.footer-marca {
-  background: #1b1b2f;
+h1, h2, h5 {
+  font-weight: 700;
   color: #fff;
-  text-align: center;
-  padding: 1.5rem 0;
 }
-.footer-marca strong {
+
+/* ---------- Menú ---------- */
+.barra-principal {
+  background: linear-gradient(90deg, #1b1b2f, #3a2a6b) !important;
+  border-bottom: 2px solid var(--color-primario);
+  padding-top: 0.7rem;
+  padding-bottom: 0.7rem;
+}
+
+/* A todo el ancho y alineado a la izquierda */
+.barra-principal > .container-fluid {
+  justify-content: flex-start;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+.barra-principal .navbar-collapse {
+  flex-grow: 1;
+}
+.barra-principal .navbar-toggler {
+  margin-left: auto;
+}
+
+/* Marca con degradé */
+.marca {
+  font-weight: 800;
   letter-spacing: 2px;
+  font-size: 1.4rem;
+  background: linear-gradient(90deg, #ffffff, var(--color-claro));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: filter 0.2s;
+}
+.marca span {
+  font-weight: 300;
+  letter-spacing: 1px;
+  font-size: 0.9rem;
+  text-transform: lowercase;
+  -webkit-text-fill-color: #c9b6f5;
+}
+.marca:hover {
+  filter: drop-shadow(0 0 8px rgba(183, 148, 246, 0.8));
 }
 
+/* Enlaces con subrayado animado */
+.barra-principal .nav-link {
+  position: relative;
+  font-weight: 500;
+  padding-bottom: 0.3rem;
+  color: #c9c9d6;
+  transition: color 0.2s;
+}
+.barra-principal .nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: var(--color-claro);
+  transition: width 0.25s;
+}
+.barra-principal .nav-link:hover,
+.barra-principal .nav-link.active {
+  color: #fff;
+}
+.barra-principal .nav-link:hover::after,
+.barra-principal .nav-link.active::after {
+  width: 100%;
+}
 
-/* ---------- Tira de texto en movimiento ---------- */
+/* Etiqueta con el nombre del usuario */
+.usuario-chip {
+  background: rgba(111, 66, 193, 0.25);
+  border: 1px solid rgba(183, 148, 246, 0.5);
+  color: #e9e0ff;
+  padding: 0.3rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+}
+
+/* ---------- Tiras de texto en movimiento ---------- */
 .tira {
   background: var(--color-oscuro);
   color: #fff;
@@ -170,23 +145,15 @@ main {
   font-size: 0.85rem;
   letter-spacing: 2px;
 }
-
 .tira-grupo span::after {
   content: "✦";
   margin: 0 1.5rem;
   color: #c9b6f5;
 }
 
-@keyframes tira-mover {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
-
 .tira:hover .tira-pista {
   animation-play-state: paused;
 }
-
-
 
 /* Tira de abajo: violeta y en sentido contrario */
 .tira-pie {
@@ -196,56 +163,105 @@ main {
   animation-direction: reverse;
 }
 
-
-
-/* ---------- Tema oscuro ---------- */
-body {
-  background: #000;
-  color: #e9e9f2;
+@keyframes tira-mover {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
 }
 
-h1, h2, h5 {
+/* ---------- Banner de la cartelera ---------- */
+.hero {
+  background: linear-gradient(120deg, #1b1b2f, var(--color-primario));
   color: #fff;
+  padding: 2.5rem 0;
+  margin-bottom: 1.5rem;
+}
+.hero h1 {
+  margin-bottom: 0.25rem;
+}
+.hero p {
+  margin: 0;
+  opacity: 0.85;
 }
 
-.card {
-  background: #14141c;
-  color: #e9e9f2;
-  box-shadow: 0 2px 8px rgba(111, 66, 193, 0.25);
-}
-#cartelera .card:hover {
-  box-shadow: 0 10px 24px rgba(111, 66, 193, 0.45);
-}
-
-/* El violeta oscuro no se lee sobre negro: usamos uno más claro */
-#cartelera .card-body p.fw-bold {
-  color: #b794f6;
+/* ---------- Botones ---------- */
+.btn-primary {
+  --bs-btn-bg: var(--color-primario);
+  --bs-btn-border-color: var(--color-primario);
+  --bs-btn-hover-bg: var(--color-primario-oscuro);
+  --bs-btn-hover-border-color: var(--color-primario-oscuro);
+  --bs-btn-active-bg: var(--color-primario-oscuro);
+  --bs-btn-active-border-color: var(--color-primario-oscuro);
 }
 .btn-outline-primary {
-  --bs-btn-color: #b794f6;
-  --bs-btn-border-color: #b794f6;
+  --bs-btn-color: var(--color-claro);
+  --bs-btn-border-color: var(--color-claro);
+  --bs-btn-hover-bg: var(--color-primario);
+  --bs-btn-hover-border-color: var(--color-primario);
+  --bs-btn-active-bg: var(--color-primario);
+  --bs-btn-active-border-color: var(--color-primario);
 }
 
-.table-responsive {
-  background: #14141c;
+/* ---------- Formularios ---------- */
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--color-primario);
+  box-shadow: 0 0 0 0.2rem rgba(111, 66, 193, 0.3);
+}
+
+/* ---------- Cards ---------- */
+.card {
+  background: var(--color-superficie);
+  color: #e9e9f2;
+  border: none;
+  border-radius: 14px;
+  overflow: hidden;
   box-shadow: 0 2px 8px rgba(111, 66, 193, 0.25);
 }
+
+/* Todas las imágenes del mismo tamaño, sin deformarse */
+.card-img-top {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+/* Cartelera: efecto al pasar el mouse */
+#cartelera .card {
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+#cartelera .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 24px rgba(111, 66, 193, 0.45);
+}
+#cartelera .badge {
+  background: var(--color-primario) !important;
+}
+#cartelera .card-body p.fw-bold {
+  color: var(--color-claro);
+}
+
+/* Pantalla de compra: imagen más alta */
+#detalle-evento .card-img-top {
+  height: 260px;
+}
+
+/* ---------- Tablas ---------- */
 .table thead th {
   background: #2a1f4d;
+  color: #fff;
+  border: none;
+}
+.table-responsive {
+  background: var(--color-superficie);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(111, 66, 193, 0.25);
 }
 
-.footer-marca {
-  background: #14141c;
-  border-top: 1px solid #2a1f4d;
-}
-
-
-
-/* ---------- Login y registro: tarjeta centrada ---------- */
+/* ---------- Login y registro ---------- */
 .auth-main {
   display: flex;
-  align-items: center;      /* centrado vertical */
-  justify-content: center;  /* centrado horizontal */
+  align-items: center;
+  justify-content: center;
   padding-top: 2rem;
   padding-bottom: 2rem;
   background: radial-gradient(circle at 50% 40%, rgba(111, 66, 193, 0.18), transparent 60%);
@@ -256,21 +272,39 @@ h1, h2, h5 {
   max-width: 440px;
   margin: 0;
   padding: 2.5rem 2rem;
-  background: #14141c;
+  background: var(--color-superficie);
   border-radius: 16px;
   box-shadow: 0 8px 30px rgba(111, 66, 193, 0.3);
 }
-
 .auth-card h2 {
   text-align: center;
   margin-bottom: 1.5rem;
 }
-
 .auth-card .form-control {
   padding: 0.75rem 1rem;
 }
-
 .auth-card .btn {
   padding: 0.7rem;
   font-weight: 600;
 }
+
+/* ---------- Pie de página ---------- */
+.footer-marca {
+  width: 100%;
+  background: var(--color-superficie);
+  border-top: 1px solid var(--color-borde);
+  color: #fff;
+  text-align: center;
+  padding: 1.5rem 0;
+}
+.footer-marca .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.footer-marca strong {
+  letter-spacing: 2px;
+}
+
+
