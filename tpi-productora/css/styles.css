@@ -4,6 +4,10 @@
           formularios · cards · tablas · login · pie
    ========================================================= */
 
+
+
+@import url("https://fonts.googleapis.com/css2?family=Michroma&display=swap");
+
 /* ---------- Variables ---------- */
 :root {
   --color-primario: #6f42c1;
@@ -308,3 +312,27 @@ h1, h2, h5 {
 }
 
 
+/* ---------- Tipografía del banner (solo la cartelera) ---------- */
+:root {
+  --fuente-banner:  "Segoe UI", sans-serif;
+}
+
+.hero p.text-uppercase {
+  font-family: var(--fuente-banner);
+  letter-spacing: 3px;
+  font-size: 0.75rem;
+}
+
+.hero h1 {
+  font-family: var(--fuente-banner);
+  font-weight: 400;          /* Michroma tiene un solo peso */
+  font-size: 2.2rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.hero p:not(.text-uppercase) {
+  font-family: var(--fuente-banner);
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+}
