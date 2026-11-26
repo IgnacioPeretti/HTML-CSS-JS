@@ -17,7 +17,7 @@
 
   /* Fuentes: para cambiar una letra, se cambia solo el nombre acá
      (y el <link> de Google Fonts en el HTML correspondiente) */
-  --fuente-banner: "Michroma", "Segoe UI", sans-serif;  /* cartel de la cartelera */
+  --fuente-banner:  "Orbitron", "Michroma", "Segoe UI", sans-serif;  /* cartel de la cartelera */
   --fuente-card: "Exo 2", "Segoe UI", sans-serif;        /* texto de las cards */
   --fuente-titulo: "Orbitron", "Segoe UI", sans-serif;   /* títulos de páginas */
 }
