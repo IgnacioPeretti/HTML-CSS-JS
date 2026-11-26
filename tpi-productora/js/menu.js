@@ -37,7 +37,6 @@ const crearTira = (clase = "") => {
     </div>`;
 };
 
-// Tira violeta + pie de página, al final del <body>
 const renderFooter = () => {
   if (document.getElementById("footer-marca")) return; // evita duplicarlo
   document.body.insertAdjacentHTML(
@@ -52,7 +51,6 @@ const renderFooter = () => {
   );
 };
 
-// Menú según el rol de la sesión (INVITADO si no hay sesión)
 const renderMenu = () => {
   document.documentElement.setAttribute("data-bs-theme", "dark");
 
@@ -76,8 +74,8 @@ const renderMenu = () => {
 
   const menu = document.getElementById("menu");
   menu.innerHTML = `
-    <nav class="navbar navbar-expand-lg navbar-dark barra-principal">
-      <div class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark barra-principal">
+      <div class="container-fluid px-4">
         <a class="navbar-brand marca me-4" href="index.html">SUBZ0NE <span>producciones</span></a>
         <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav-contenido">
           <span class="navbar-toggler-icon"></span>
@@ -89,7 +87,7 @@ const renderMenu = () => {
       </div>
     </nav>`;
 
-  // Tira oscura justo debajo del menú
+  // Tira justo debajo del menú
   if (!document.querySelector(".tira-arriba")) {
     menu.insertAdjacentHTML("afterend", crearTira("tira-arriba"));
   }
