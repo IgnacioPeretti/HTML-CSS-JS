@@ -44,7 +44,7 @@ const renderFooter = () => {
     `${crearTira("tira-pie")}
      <footer id="footer-marca" class="footer-marca">
        <div class="container">
-         <strong>SUBZ0NE</strong> producciones · Venta de entradas para eventos y espectáculos
+         <strong>SUBZ0NE</strong> Venta de entradas para eventos y espectáculos
          <div class="small opacity-75">© 2026 SUBZ0NE producciones · TPI Programación III</div>
        </div>
      </footer>`
@@ -52,7 +52,7 @@ const renderFooter = () => {
 };
 
 const renderMenu = () => {
-  document.documentElement.setAttribute("data-bs-theme", "dark");
+  document.documentElement.setAttribute("data-bs-theme", "black");
 
   const sesion = getSesion();
   const rol = sesion ? sesion.role : "INVITADO";
