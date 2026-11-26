@@ -45,7 +45,7 @@ const crearTarjeta = (titulo, valor) => `
   <div class="col">
     <div class="card text-center h-100">
       <div class="card-body">
-        <p class="text-muted mb-1">${titulo}</p>
+        <p class="text-light opacity-75 mb-1">${titulo}</p>
         <p class="fs-3 fw-bold mb-0">${valor}</p>
       </div>
     </div>
