@@ -1,6 +1,3 @@
-
-
-
 const BASE_URL = "https://6b04d06fdb01cf463607a2e2.mockapi.io/api/version1";
 
 const request = async (recurso, opciones = {}) => {
@@ -11,7 +8,6 @@ const request = async (recurso, opciones = {}) => {
   if (!respuesta.ok) throw new Error(`Error ${respuesta.status}`);
   return respuesta.json();
 };
-
 
 // Usuarios
 const getUsuarios = () => request("usuarios");

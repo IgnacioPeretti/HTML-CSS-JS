@@ -20,10 +20,10 @@ const mostrarEvento = () => {
       <img src="${evento.imagen}" class="card-img-top" alt="${evento.titulo}" />
       <div class="card-body">
         <h4>${evento.titulo}</h4>
-        <p class="mb-1">📅 ${evento.fecha.slice(0, 10).split("-").reverse().join("/")}</p>
-        <p class="mb-1">📍 ${evento.lugar}</p>
-        <p class="mb-1">🎟️ Cupos disponibles: <strong>${evento.cuposDisponibles}</strong></p>
-        <p class="mb-0">Precio por entrada: <strong>${formatearPesos(evento.precio)}</strong></p>
+        <p class="mb-1"><strong>Fecha:</strong> ${evento.fecha.slice(0, 10).split("-").reverse().join("/")}</p>
+        <p class="mb-1"><strong>Lugar:</strong> ${evento.lugar}</p>
+        <p class="mb-1"><strong>Cupos disponibles:</strong> ${evento.cuposDisponibles}</p>
+        <p class="mb-0"><strong>Precio por entrada:</strong> ${formatearPesos(evento.precio)}</p>
       </div>
     </div>`;
 };

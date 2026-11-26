@@ -37,6 +37,7 @@ const crearTira = (clase = "") => {
     </div>`;
 };
 
+// Tira violeta + pie de página, al final del <body>
 const renderFooter = () => {
   if (document.getElementById("footer-marca")) return; // evita duplicarlo
   document.body.insertAdjacentHTML(
@@ -51,36 +52,44 @@ const renderFooter = () => {
   );
 };
 
+// Menú según el rol de la sesión (INVITADO si no hay sesión)
 const renderMenu = () => {
   document.documentElement.setAttribute("data-bs-theme", "dark");
+
   const sesion = getSesion();
   const rol = sesion ? sesion.role : "INVITADO";
 
+  // Página actual, para marcar el enlace activo
+  const paginaActual = window.location.pathname.split("/").pop() || "index.html";
+
   const enlaces = opcionesMenu[rol]
-    .map((o) => `<li class="nav-item"><a class="nav-link" href="${o.href}">${o.texto}</a></li>`)
+    .map((o) => {
+      const activo = o.href === paginaActual ? "active" : "";
+      return `<li class="nav-item"><a class="nav-link ${activo}" href="${o.href}">${o.texto}</a></li>`;
+    })
     .join("");
 
   const zonaUsuario = sesion
-    ? `<span class="navbar-text me-3">${sesion.nombre} (${sesion.role})</span>
+    ? `<span class="usuario-chip me-3">${sesion.nombre} · ${sesion.role}</span>
        <button id="btn-salir" class="btn btn-outline-light btn-sm">Cerrar sesión</button>`
     : "";
 
   const menu = document.getElementById("menu");
   menu.innerHTML = `
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container">
-        <a class="navbar-brand marca" href="index.html">SUBZ0NE <span>producciones</span></a>
+    <nav class="navbar navbar-expand-lg navbar-dark barra-principal">
+      <div class="container-fluid">
+        <a class="navbar-brand marca me-4" href="index.html">SUBZ0NE <span>producciones</span></a>
         <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav-contenido">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="nav-contenido">
-          <ul class="navbar-nav me-auto">${enlaces}</ul>
+          <ul class="navbar-nav me-auto gap-lg-2">${enlaces}</ul>
           ${zonaUsuario}
         </div>
       </div>
     </nav>`;
 
-  // Tira justo debajo del menú
+  // Tira oscura justo debajo del menú
   if (!document.querySelector(".tira-arriba")) {
     menu.insertAdjacentHTML("afterend", crearTira("tira-arriba"));
   }

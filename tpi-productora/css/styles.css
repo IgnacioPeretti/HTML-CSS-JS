@@ -1,12 +1,9 @@
 /* =========================================================
    SUBZ0NE producciones · estilos del sitio
+   Se apoya en Bootstrap 5.3 (tema oscuro) y agrega lo propio.
    Orden: variables · base · menú · tiras · banner · botones
           formularios · cards · tablas · login · pie
    ========================================================= */
-
-
-
-@import url("https://fonts.googleapis.com/css2?family=Michroma&display=swap");
 
 /* ---------- Variables ---------- */
 :root {
@@ -16,13 +13,11 @@
   --color-oscuro: #1b1b2f;
   --color-superficie: #14141c;
   --color-borde: #2a1f4d;
+  --fuente-banner: "Michroma", "Segoe UI", sans-serif;
+  --fuente-card: "Oxanium", "Segoe UI", sans-serif;
 }
 
 /* ---------- Base ---------- */
-html {
-  height: 100%;
-}
-
 body {
   display: flex;
   flex-direction: column;
@@ -46,7 +41,7 @@ h1, h2, h5 {
 
 /* ---------- Menú ---------- */
 .barra-principal {
-  background: linear-gradient(90deg, #1b1b2f, #3a2a6b) !important;
+  background: linear-gradient(90deg, #1b1b2f, #3a2a6b);
   border-bottom: 2px solid var(--color-primario);
   padding-top: 0.7rem;
   padding-bottom: 0.7rem;
@@ -179,12 +174,24 @@ h1, h2, h5 {
   padding: 2.5rem 0;
   margin-bottom: 1.5rem;
 }
-.hero h1 {
-  margin-bottom: 0.25rem;
-}
 .hero p {
   margin: 0;
   opacity: 0.85;
+  font-family: var(--fuente-banner);
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+}
+.hero p.text-uppercase {
+  font-size: 0.75rem;
+  letter-spacing: 3px;
+}
+.hero h1 {
+  margin-bottom: 0.25rem;
+  font-family: var(--fuente-banner);
+  font-weight: 400;                       /* Michroma tiene un solo peso */
+  font-size: clamp(1.4rem, 5vw, 2.2rem);  /* se achica en el celular */
+  letter-spacing: 2px;
+  text-transform: uppercase;
 }
 
 /* ---------- Botones ---------- */
@@ -222,6 +229,16 @@ h1, h2, h5 {
   box-shadow: 0 2px 8px rgba(111, 66, 193, 0.25);
 }
 
+/* Tipografía de las cards (cartelera y detalle de compra) */
+.card-body {
+  font-family: var(--fuente-card);
+}
+.card-title,
+.card-body h4 {
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
 /* Todas las imágenes del mismo tamaño, sin deformarse */
 .card-img-top {
   width: 100%;
@@ -238,7 +255,7 @@ h1, h2, h5 {
   box-shadow: 0 10px 24px rgba(111, 66, 193, 0.45);
 }
 #cartelera .badge {
-  background: var(--color-primario) !important;
+  background: var(--color-primario);
 }
 #cartelera .card-body p.fw-bold {
   color: var(--color-claro);
@@ -251,7 +268,7 @@ h1, h2, h5 {
 
 /* ---------- Tablas ---------- */
 .table thead th {
-  background: #2a1f4d;
+  background: var(--color-borde);
   color: #fff;
   border: none;
 }
@@ -274,7 +291,6 @@ h1, h2, h5 {
 .auth-card {
   width: 100%;
   max-width: 440px;
-  margin: 0;
   padding: 2.5rem 2rem;
   background: var(--color-superficie);
   border-radius: 16px;
@@ -305,34 +321,7 @@ h1, h2, h5 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
 }
 .footer-marca strong {
   letter-spacing: 2px;
-}
-
-
-/* ---------- Tipografía del banner (solo la cartelera) ---------- */
-:root {
-  --fuente-banner:  "Segoe UI", sans-serif;
-}
-
-.hero p.text-uppercase {
-  font-family: var(--fuente-banner);
-  letter-spacing: 3px;
-  font-size: 0.75rem;
-}
-
-.hero h1 {
-  font-family: var(--fuente-banner);
-  font-weight: 400;          /* Michroma tiene un solo peso */
-  font-size: 2.2rem;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-}
-
-.hero p:not(.text-uppercase) {
-  font-family: var(--fuente-banner);
-  font-size: 0.85rem;
-  letter-spacing: 1px;
 }

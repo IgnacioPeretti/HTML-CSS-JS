@@ -24,11 +24,11 @@ const crearCard = (evento) => `
     <div class="card h-100 shadow-sm">
       <img src="${evento.imagen}" class="card-img-top" alt="${evento.titulo}" />
       <div class="card-body d-flex flex-column">
-        <span class="badge bg-secondary align-self-start mb-2">${evento.categoria}</span>
+        <span class="badge align-self-start mb-2">${evento.categoria}</span>
         <h5 class="card-title">${evento.titulo}</h5>
-        <p class="mb-1">📅 ${formatearFecha(evento.fecha)}</p>
-        <p class="mb-1">📍 ${evento.lugar}</p>
-        <p class="mb-1">🎟️ Cupos: ${evento.cuposDisponibles}</p>
+        <p class="mb-1"><strong>Fecha:</strong> ${formatearFecha(evento.fecha)}</p>
+        <p class="mb-1"><strong>Lugar:</strong> ${evento.lugar}</p>
+        <p class="mb-1"><strong>Cupos:</strong> ${evento.cuposDisponibles}</p>
         <p class="fw-bold fs-5 mt-auto">$${Number(evento.precio).toLocaleString("es-AR")}</p>
         ${botonCompra(evento)}
       </div>
