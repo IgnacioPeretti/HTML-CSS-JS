@@ -2,19 +2,24 @@
    SUBZ0NE producciones · estilos del sitio
    Se apoya en Bootstrap 5.3 (tema oscuro) y agrega lo propio.
    Orden: variables · base · menú · tiras · banner · botones
-          formularios · cards · tablas · login · pie
+          formularios · cards · tablas · títulos · login · pie
    ========================================================= */
 
 /* ---------- Variables ---------- */
 :root {
+  /* Colores */
   --color-primario: #6f42c1;
   --color-primario-oscuro: #5a32a3;
   --color-claro: #b794f6;
   --color-oscuro: #1b1b2f;
   --color-superficie: #14141c;
   --color-borde: #2a1f4d;
-  --fuente-banner: "Orbitron", "Segoe UI", sans-serif;
-  --fuente-card: "Exo 2", "Segoe UI", sans-serif;
+
+  /* Fuentes: para cambiar una letra, se cambia solo el nombre acá
+     (y el <link> de Google Fonts en el HTML correspondiente) */
+  --fuente-banner: "Michroma", "Segoe UI", sans-serif;  /* cartel de la cartelera */
+  --fuente-card: "Exo 2", "Segoe UI", sans-serif;        /* texto de las cards */
+  --fuente-titulo: "Orbitron", "Segoe UI", sans-serif;   /* títulos de páginas */
 }
 
 /* ---------- Base ---------- */
@@ -194,15 +199,6 @@ h1, h2, h5 {
   text-transform: uppercase;
 }
 
-/* Título de la página Mis entradas */
-.titulo-fuente {
-  font-family: "Exo 2", "Orbitron", "Segoe UI", sans-serif;
-  font-weight: 700;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-}
-
-
 /* ---------- Botones ---------- */
 .btn-primary {
   --bs-btn-bg: var(--color-primario);
@@ -228,7 +224,7 @@ h1, h2, h5 {
   box-shadow: 0 0 0 0.2rem rgba(111, 66, 193, 0.3);
 }
 
-/* ---------- Cards ---------- */
+/* ---------- Cards (general) ---------- */
 .card {
   background: var(--color-superficie);
   color: #e9e9f2;
@@ -255,9 +251,7 @@ h1, h2, h5 {
   object-fit: cover;
 }
 
-
-/* Cartelera: efecto al pasar el mouse */
-/* Cartelera: efecto neón */
+/* ---------- Cards de la cartelera: neón y tamaño compacto ---------- */
 #cartelera .card {
   border: 1px solid var(--color-claro);
   box-shadow:
@@ -285,7 +279,24 @@ h1, h2, h5 {
 #cartelera .badge {
   background: var(--color-primario);
 }
+#cartelera .card-body p.fw-bold {
+  color: var(--color-claro);
+}
 
+/* Tamaños compactos */
+#cartelera .card-img-top {
+  height: 150px;
+}
+#cartelera .card-body {
+  padding: 0.9rem;
+  font-size: 0.9rem;
+}
+#cartelera .card-title {
+  font-size: 1.05rem;
+}
+#cartelera .card-body p.fs-5 {
+  font-size: 1.1rem !important;  /* Bootstrap usa !important en fs-5 */
+}
 
 /* Pantalla de compra: imagen más alta */
 #detalle-evento .card-img-top {
@@ -302,6 +313,15 @@ h1, h2, h5 {
   background: var(--color-superficie);
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(111, 66, 193, 0.25);
+}
+
+/* ---------- Títulos de páginas con fuente propia ---------- */
+/* Se activa agregando class="titulo-fuente" al <h1> */
+.titulo-fuente {
+  font-family: var(--fuente-titulo);
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
 }
 
 /* ---------- Login y registro ---------- */
