@@ -13,8 +13,8 @@
   --color-oscuro: #1b1b2f;
   --color-superficie: #14141c;
   --color-borde: #2a1f4d;
-  --fuente-banner: "Michroma", "Segoe UI", sans-serif;
-  --fuente-card: "Oxanium", "Segoe UI", sans-serif;
+  --fuente-banner: "Orbitron", "Segoe UI", sans-serif;
+  --fuente-card: "Exo 2", "Segoe UI", sans-serif;
 }
 
 /* ---------- Base ---------- */
@@ -193,6 +193,15 @@ h1, h2, h5 {
   letter-spacing: 2px;
   text-transform: uppercase;
 }
+
+/* Título de la página Mis entradas */
+.titulo-fuente {
+  font-family: "Exo 2", "Orbitron", "Segoe UI", sans-serif;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
 
 /* ---------- Botones ---------- */
 .btn-primary {
