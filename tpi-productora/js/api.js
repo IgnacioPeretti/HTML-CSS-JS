@@ -31,3 +31,4 @@ const crearTicket = (ticket) =>
   request("tickets", { method: "POST", body: JSON.stringify(ticket) });
 const actualizarTicket = (id, datos) =>
   request(`tickets/${id}`, { method: "PUT", body: JSON.stringify(datos) });
+const eliminarTicket = (id) => request(`tickets/${id}`, { method: "DELETE" });

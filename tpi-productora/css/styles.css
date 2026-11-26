@@ -255,20 +255,37 @@ h1, h2, h5 {
   object-fit: cover;
 }
 
+
 /* Cartelera: efecto al pasar el mouse */
+/* Cartelera: efecto neón */
 #cartelera .card {
-  transition: transform 0.2s, box-shadow 0.2s;
+  border: 1px solid var(--color-claro);
+  box-shadow:
+    0 0 6px rgba(183, 148, 246, 0.6),
+    0 0 18px rgba(111, 66, 193, 0.5),
+    inset 0 0 10px rgba(111, 66, 193, 0.15);
+  transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
 }
 #cartelera .card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 24px rgba(111, 66, 193, 0.45);
+  border-color: #fff;
+  box-shadow:
+    0 0 8px rgba(183, 148, 246, 0.9),
+    0 0 24px rgba(183, 148, 246, 0.7),
+    0 0 48px rgba(111, 66, 193, 0.6),
+    inset 0 0 14px rgba(111, 66, 193, 0.25);
 }
+
+/* Texto con brillo, como la marca del menú */
+#cartelera .card-title,
+#cartelera .card-body p.fw-bold {
+  text-shadow: 0 0 8px rgba(183, 148, 246, 0.7);
+}
+
 #cartelera .badge {
   background: var(--color-primario);
 }
-#cartelera .card-body p.fw-bold {
-  color: var(--color-claro);
-}
+
 
 /* Pantalla de compra: imagen más alta */
 #detalle-evento .card-img-top {

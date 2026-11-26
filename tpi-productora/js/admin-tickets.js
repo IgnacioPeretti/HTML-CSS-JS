@@ -23,6 +23,14 @@ const crearSelectEstado = (ticket) => `
     ).join("")}
   </select>`;
 
+// Se puede eliminar del historial si no ocupa cupos (cancelado) o si su evento ya no existe
+const sePuedeEliminar = (t) => !t.evento || t.estado === "Cancelado";
+
+const crearBotonEliminar = (t) =>
+  sePuedeEliminar(t)
+    ? `<button class="btn btn-outline-danger btn-sm" data-eliminar="${t.id}">Eliminar</button>`
+    : "";
+
 const crearFila = (t) => `
   <tr>
     <td>${t.id}</td>
@@ -31,6 +39,7 @@ const crearFila = (t) => `
     <td>${t.cantidad}</td>
     <td>${formatearPesos(t.total)}</td>
     <td>${crearSelectEstado(t)}</td>
+    <td>${crearBotonEliminar(t)}</td>
   </tr>`;
 
 const renderTickets = () => {
@@ -46,7 +55,7 @@ const renderTickets = () => {
       <thead>
         <tr>
           <th>#</th><th>Usuario</th><th>Evento</th>
-          <th>Cantidad</th><th>Total</th><th>Estado</th>
+          <th>Cantidad</th><th>Total</th><th>Estado</th><th></th>
         </tr>
       </thead>
       <tbody>${filtrados.map(crearFila).join("")}</tbody>
@@ -84,7 +93,8 @@ const cambiarEstado = async (ticketId, nuevoEstado) => {
     if (estadoAnterior === nuevoEstado) return;
 
     // Si cambia entre ocupar o no cupos, hay que ajustar el evento
-    if (ocupaCupos(estadoAnterior) !== ocupaCupos(nuevoEstado)) {
+    // (si el evento ya fue eliminado, no hay cupos que ajustar)
+    if (ocupaCupos(estadoAnterior) !== ocupaCupos(nuevoEstado) && ticket.evento) {
       const evento = await getEvento(ticket.eventId);
 
       if (nuevoEstado === "Cancelado") {
@@ -111,6 +121,23 @@ const cambiarEstado = async (ticketId, nuevoEstado) => {
   cargarTickets(); // recarga siempre, así el select vuelve al valor real si falló
 };
 
+// ---------- ELIMINAR TICKET ----------
+const borrarTicket = async (ticketId) => {
+  try {
+    const ticket = tickets.find((t) => String(t.id) === String(ticketId));
+    if (!ticket || !sePuedeEliminar(ticket)) {
+      throw new Error("Solo se pueden eliminar tickets cancelados o de eventos eliminados");
+    }
+    if (!confirm("¿Eliminar este ticket del historial?")) return;
+
+    await eliminarTicket(ticket.id);
+    mostrarMensaje(`Ticket #${ticket.id} eliminado del historial`, "text-success");
+  } catch (error) {
+    mostrarMensaje(error.message, "text-danger");
+  }
+  cargarTickets();
+};
+
 // ---------- EVENTOS DEL DOM ----------
 filtroEstado.addEventListener("change", renderTickets);
 
@@ -118,6 +145,12 @@ filtroEstado.addEventListener("change", renderTickets);
 lista.addEventListener("change", (e) => {
   const select = e.target.closest("select[data-id]");
   if (select) cambiarEstado(select.dataset.id, select.value);
+});
+
+// Un solo listener para todos los botones Eliminar de la tabla
+lista.addEventListener("click", (e) => {
+  const boton = e.target.closest("button[data-eliminar]");
+  if (boton) borrarTicket(boton.dataset.eliminar);
 });
 
 cargarTickets();
