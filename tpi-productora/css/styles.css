@@ -354,6 +354,11 @@ h1, h2, h5 {
   font-weight: 600;
 }
 
+/* Texto secundario legible sobre fondo oscuro */
+.text-muted {
+  color: #b9b9cc !important;
+}
+
 /* ---------- Pie de página ---------- */
 .footer-marca {
   width: 100%;
