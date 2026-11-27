@@ -52,19 +52,43 @@ const renderTickets = (tickets) => {
     </table>`;
 };
 
-// Cruce en memoria: a cada ticket del usuario le pegamos su evento
+
+// CRUCE EN MEMORIA
+// MockAPI no tiene JOINs: un ticket solo guarda userId y eventId (números),
+// no el nombre del evento ni su fecha. Para mostrar esos datos pedimos las
+// dos listas completas y las unimos nosotros con JavaScript.
+
 const cargarTickets = async () => {
   try {
     const sesion = getSesion();
+
+
+    // 1. Pedimos tickets y eventos al mismo tiempo (en paralelo).
+    //    Promise.all espera a que lleguen los dos antes de seguir.
+
     const [tickets, eventos] = await Promise.all([getTickets(), getEventos()]);
 
     const misTickets = tickets
+
+      // 2. filter: nos quedamos solo con los tickets de este usuario,
+      //    comparando el userId del ticket con el id de la sesión.
+      //    Usamos String() porque MockAPI devuelve los ids como texto.
+
       .filter((t) => String(t.userId) === String(sesion.id))
+
+      // 3. map: recorremos cada ticket y armamos uno nuevo.
+      //    ...t copia todas las propiedades originales del ticket y
+      //    le agregamos "evento": el que find() encuentra en la lista
+      //    de eventos cuyo id coincide con el eventId del ticket.
+      //    Si el evento fue eliminado, find() devuelve undefined.
+
       .map((t) => ({
         ...t,
         evento: eventos.find((e) => String(e.id) === String(t.eventId)),
       }));
 
+      
+      // 4. Ahora cada ticket trae su evento adentro y se puede dibujar la tabla.
     renderTickets(misTickets);
   } catch (error) {
     lista.innerHTML = `<p class="text-danger">No se pudieron cargar tus entradas: ${error.message}</p>`;
