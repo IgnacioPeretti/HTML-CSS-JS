@@ -1,4 +1,6 @@
-// Solo un USUARIO puede comprar; el resto es redirigido
+// Si alguien entra sin sesión lo manda al login, y si es admin lo manda al inicio,
+//  porque solo el usuario común puede comprar.
+
 protegerPagina("USUARIO");
 
 const detalle = document.getElementById("detalle-evento");
@@ -8,6 +10,7 @@ const totalEl = document.getElementById("total");
 const mensaje = document.getElementById("mensaje");
 
 // El id del evento viaja en la URL: comprar.html?id=3
+
 const eventoId = new URLSearchParams(window.location.search).get("id");
 
 let evento = null;
@@ -15,6 +18,8 @@ let evento = null;
 const formatearPesos = (n) => "$" + Number(n).toLocaleString("es-AR");
 
 const mostrarEvento = () => {
+
+  // arma la card con innerHTML
   detalle.innerHTML = `
     <div class="card">
       <img src="${evento.imagen}" class="card-img-top" alt="${evento.titulo}" />
@@ -28,6 +33,11 @@ const mostrarEvento = () => {
     </div>`;
 };
 
+
+
+// Evento input: cada vez que el usuario escribe la cantidad se ejecuta actualizarTotal,
+// que multiplica cantidad por precio y lo muestra con textContent. Es en tiempo real, sin enviar nada.
+
 const actualizarTotal = () => {
   const cantidad = Number(inputCantidad.value) || 0;
   totalEl.textContent = formatearPesos(cantidad * evento.precio);
@@ -37,6 +47,11 @@ const mostrarMensaje = (texto, clase) => {
   mensaje.className = clase;
   mensaje.textContent = texto;
 };
+
+
+// El segundo es submit, cuando confirma. Se ejecuta confirmarCompra, que es una función async.
+// Empieza con preventDefault para que el formulario no recargue la página.
+// Después valida que la cantidad sea un entero mayor o igual a 1.
 
 const confirmarCompra = async (e) => {
   e.preventDefault();
@@ -51,6 +66,11 @@ const confirmarCompra = async (e) => {
     if (cantidad > eventoActual.cuposDisponibles) {
       throw new Error(`Solo quedan ${eventoActual.cuposDisponibles} cupos disponibles`);
     }
+
+
+    // Si todo está bien, hago dos llamadas en orden. Con crearTicket hago un POST con el userId de la sesión,
+    // el eventId, la cantidad, el total y el estado Confirmado.
+    // Y con actualizarEvento hago un PUT que descuenta los cupos.
 
     const sesion = getSesion();
     await crearTicket({
@@ -78,6 +98,11 @@ const confirmarCompra = async (e) => {
     mostrarMensaje(error.message, "text-danger");
   }
 };
+
+//la función iniciar pide el evento con getEvento y lo dibuja con mostrarEvento, que arma la card con innerHTML.
+//Si no quedan cupos muestra Agotado y no aparece el formulario.
+//Si hay cupos, le pone el máximo al input y lo muestra sacándole la clase
+
 
 const iniciar = async () => {
   if (!eventoId) {

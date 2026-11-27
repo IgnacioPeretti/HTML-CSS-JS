@@ -35,6 +35,8 @@ const crearFila = (ticket) => {
     </tr>`;
 };
 
+// innerHTML dibuja la tabla. Los datos vienen de MockAPI (los carga el admin):
+
 const renderTickets = (tickets) => {
   if (tickets.length === 0) {
     lista.innerHTML = `<p class="text-muted">Todavía no compraste entradas. <a href="index.html">Ver cartelera</a></p>`;
@@ -48,6 +50,7 @@ const renderTickets = (tickets) => {
           <th>Cantidad</th><th>Total</th><th>Estado</th><th></th>
         </tr>
       </thead>
+
       <tbody>${tickets.map(crearFila).join("")}</tbody>
     </table>`;
 };
@@ -120,7 +123,11 @@ const cancelarTicket = async (ticketId) => {
   }
 };
 
-// Un solo listener para todos los botones Cancelar (delegación de eventos)
+// Un solo listener para todos los botones Cancelar
+// detecto qué botón se tocó y leo su id con dataset
+// la tabla se redibuja con innerHTML cada vez, y los botones nuevos no tendrían listener propio.
+// El clic burbujea hasta el contenedor y ahí lo atiendo.
+
 lista.addEventListener("click", (e) => {
   const boton = e.target.closest("button[data-id]");
   if (boton) cancelarTicket(boton.dataset.id);
